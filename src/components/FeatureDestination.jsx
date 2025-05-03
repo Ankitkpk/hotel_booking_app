@@ -1,0 +1,23 @@
+import React from 'react'
+ import { roomsDummyData } from '../assets/assets'
+import HotelCard from './HotelCard'
+import Title from './Title'
+import { useNavigate } from 'react-router'
+const FeatureDestination = () => {
+    const navigate=useNavigate();
+  return (
+    <div className='flex flex-col items-center  px-6 md:px-16 lg:25 bg-slate-100 py-20'>
+        <Title title='FeatureDestinations' subtitle='Discover our handpicked selection of exceptional properties around the world offering unparalled and unforgettable expirences'/>
+        <div className='flex flex-wrap items-center justify-between gap-14 mt-20 mb-3'>
+      {roomsDummyData.slice(0,4).map((room,index)=>(
+        <HotelCard key={room._id} room={room} index={index}/>
+      ))}
+        </div>
+        <button onClick={()=>{navigate('/rooms'); scrollTo(0, 0); } }   className='my-16 px-4 py-2 border text-sm font-medium border-gray-300 rounded bg-white hover:bg-gray-50 transition-all cursor-pointer '>
+          View All destinations
+        </button>
+    </div>
+  )
+}
+
+export default FeatureDestination
