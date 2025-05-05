@@ -28,22 +28,25 @@ const ExclusiveOffers = () => {
             style={{ backgroundImage: `url(${item.image})` }}
           >
             <div>
-              <p className="text-lg font-semibold inline-block px-3 py-1 rounded-md">
+              <p className="text-sm  text-black font-semibold inline-block px-3 py-1 rounded-full bg-white rounded-full">
                 {item.priceOff}% OFF
               </p>
             </div>
 
-            <div className="mt-auto p-4 rounded-md ">
+            <div className="flex flex-col mt-auto rounded-md py-10 gap-y-2 ">
               <p className="text-lg font-bold">{item.title}</p>
               <p className="text-sm opacity-90">{item.description}</p>
               <p className="text-xs mt-1 text-gray-300">Expires: {item.expiryDate}</p>
               <button className="mt-2 group flex items-center gap-1 text-sm font-medium  hover:opacity-90 transition-all">
                 View offer
-                <img
-                  className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
-                  src={assets.arrowIcon}
-                  alt="arrow icon"
-                />
+                <svg
+                 className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform duration-200"
+                 fill="currentColor"
+                 viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path fillRule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
+               </svg>
               </button>
             </div>
           </div>
