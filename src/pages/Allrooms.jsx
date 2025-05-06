@@ -16,6 +16,19 @@ const CheckBox = ({ label, selected = false, onChange = () => {} }) => {
     );
   };
 
+  const RadioButton = ({ label, selected = false, onChange = () => {} }) => {
+    return (
+      <label className='flex gap-3 items-center cursor-pointer mt-2 text-sm'>
+        <input
+          type="radio"
+          checked={selected}
+          onChange={(e) => onChange(label)}
+        />
+        <span className='font-light select-none'>{label}</span>
+      </label>
+    );
+  };
+
 const Allrooms = () => {
   const navigate = useNavigate();
   const [openFilters,setOpenFilters]=useState(false);
@@ -111,8 +124,7 @@ const Allrooms = () => {
             }
            </div>
            <p className='text-xl font-medium text-gray-700'>${room.pricePerNight}/Night</p>
-
-
+           
             </div>
           </div>
         ))}
@@ -131,12 +143,29 @@ const Allrooms = () => {
      <div className={`${openFilters? 'h-auto' : 'h-0 lg:h-auto'} overflow-hidden transition-all duration-700`}>
         <div className='px-5 pt-5'>
         <p className='text-base font-medium text-gray-800 '>Popular filters</p>
+        {
+            roomTypes.map((room,index)=>(
+              <CheckBox key={index} label={room}/>
+            ))
+           }
+      
         </div>
         <div className='px-5 pt-5'>
         <p className='text-base font-medium text-gray-800'>Price</p>
+        {
+            priceRanges.map((range,index)=>(
+              <CheckBox key={index} label={`$${range}`}/>
+            ))
+           }
         </div>
-        <div className='px-5 pt-5'>
+        <div className='px-5 pt-5 pb-5'>
         <p className='text-base font-medium text-gray-800'>Sort By</p>
+        {
+            sortOptions.map((options,index)=>(
+            <RadioButton key={index} label={options}/>
+              
+            ))
+           }
         </div>
 
      </div>
